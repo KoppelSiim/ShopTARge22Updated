@@ -5,7 +5,7 @@ using ShopTARge22.Data;
 
 namespace ShopTARge22.ApplicationServices.Services
 {
-    public class RealestatesServices : IRealestates
+    public class RealestatesServices : IRealestateServices
 
     {
         private readonly ShopTARge22Context _context;

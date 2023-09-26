@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShopTARge22.Core.ServiceInterface
 {
-    public interface IRealestatesServices
+    public interface IRealestateServices
     {
         Task<Realestate> Create(RealestatesDto dto);
     }
