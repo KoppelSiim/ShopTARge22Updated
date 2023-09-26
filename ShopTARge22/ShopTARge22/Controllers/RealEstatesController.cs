@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShopTARge22.Data;
+using ShopTARge22.Models.Realestates;
+using ShopTARge22.Models.Spaceships;
 
 namespace ShopTARge22.Controllers
 {
@@ -13,7 +15,19 @@ namespace ShopTARge22.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var result = _context.Realestates
+                .Select(x => new RealestatesIndexViewModel
+                {
+                    Id = x.Id,
+                    Address = x.Address,
+                    SizeSqrM = x.SizeSqrM,
+                    RoomCount = x.RoomCount,
+                    Floor = x.Floor,
+                    BuildingType = x.BuildingType,
+                    BuiltInYear = x.BuiltInYear
+                });
+
+            return View(result);
         }
     }
 }
