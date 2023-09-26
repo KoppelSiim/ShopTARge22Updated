@@ -3,7 +3,7 @@
 
 namespace ShopTARge22.Core.Domain
 {
-    public class RealEstate
+    public class Realestate
     {
         [Key]
         public Guid Id { get; set; }
