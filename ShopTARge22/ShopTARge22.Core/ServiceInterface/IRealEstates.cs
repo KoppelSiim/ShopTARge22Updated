@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ShopTARge22.Core.Domain;
+using ShopTARge22.Core.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,6 @@ namespace ShopTARge22.Core.ServiceInterface
 {
     public interface IRealestates
     {
+        Task<Realestate> Create(RealestatesDto dto);
     }
 }

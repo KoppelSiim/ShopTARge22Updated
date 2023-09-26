@@ -15,7 +15,7 @@ namespace ShopTARge22.ApplicationServices.Services
             _context = context;
         }
 
-       /* public async Task<Realestate> Create(RealestatesDto dto)
+        public async Task<Realestate> Create(RealestatesDto dto)
         {
             Realestate realestate = new Realestate();
 
@@ -28,12 +28,12 @@ namespace ShopTARge22.ApplicationServices.Services
             realestate.BuiltInYear = dto.BuiltInYear;
             realestate.CreatedAt = DateTime.Now;
             realestate.UpdatedAt = DateTime.Now;
-           
 
-            await _context.Realestates
-            //await _context.SaveChangesAsync();
-       */
-            //return spaceship;
+
+            await _context.Realestates.AddAsync(realestate);
+            await _context.SaveChangesAsync();
+
+            return realestate;
         }
     }
 }
