@@ -1,4 +1,5 @@
-﻿using ShopTARge22.Core.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using ShopTARge22.Core.Domain;
 using ShopTARge22.Core.Dto;
 using ShopTARge22.Core.ServiceInterface;
 using ShopTARge22.Data;
@@ -34,6 +35,14 @@ namespace ShopTARge22.ApplicationServices.Services
             await _context.SaveChangesAsync();
 
             return realestate;
+        }
+
+        public async Task<Realestate> DetailsAsync(Guid id)
+        {
+            var result = await _context.Realestates
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            return result;
         }
     }
 }

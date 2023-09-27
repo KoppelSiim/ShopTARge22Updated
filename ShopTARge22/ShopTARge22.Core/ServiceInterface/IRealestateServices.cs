@@ -11,5 +11,6 @@ namespace ShopTARge22.Core.ServiceInterface
     public interface IRealestateServices
     {
         Task<Realestate> Create(RealestatesDto dto);
+        Task<Realestate> DetailsAsync(Guid id);
     }
 }
