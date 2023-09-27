@@ -1,6 +1,6 @@
 ﻿namespace ShopTARge22.Core.Dto
 {
-    public class RealestatesDto
+    public class RealestateDto
     {
         public Guid? Id { get; set; }
         public string Address { get; set; }

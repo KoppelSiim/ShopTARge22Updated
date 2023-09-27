@@ -16,7 +16,7 @@ namespace ShopTARge22.ApplicationServices.Services
             _context = context;
         }
 
-        public async Task<Realestate> Create(RealestatesDto dto)
+        public async Task<Realestate> Create(RealestateDto dto)
         {
             Realestate realestate = new Realestate();
 
@@ -44,5 +44,27 @@ namespace ShopTARge22.ApplicationServices.Services
 
             return result;
         }
+
+        public async Task<Realestate> Update(RealestateDto dto)
+        {
+            var domain = new Realestate()
+            {
+                Id = dto.Id,
+                Address = dto.Address,
+                SizeSqrM = dto.SizeSqrM,
+                RoomCount = dto.RoomCount,
+                Floor = dto.Floor,
+                BuildingType = dto.BuildingType,
+                BuiltInYear = dto.BuiltInYear,
+                CreatedAt = dto.CreatedAt,
+                UpdatedAt = DateTime.Now,
+            };
+
+            _context.Realestates.Update(domain);
+            await _context.SaveChangesAsync();
+
+            return domain;
+        }
+
     }
 }
