@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ShopTARge22.ApplicationServices.Services;
 using ShopTARge22.Core.Domain;
 using ShopTARge22.Core.ServiceInterface;
 using ShopTARge22.Data;
@@ -35,12 +36,31 @@ namespace ShopTARge22.Controllers
             return View(result);
         }
 
-        /*{ public async Task<Realestate> DetailsAsync(Guid id)
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var realestate = await _realestateServices.DetailsAsync(id);
 
-             var result = await _context.Realestates
-                 .FirstOrDefaultAsync(x => x.Id == id);
+            if (realestate == null)
+            {
+                return NotFound();
+            }
 
-             return result;
-         }*/
+            var vm = new RealestatesDetailsViewModel();
+
+            vm.Id = realestate.Id;
+            vm.Address = realestate.Address;
+            vm.SizeSqrM = realestate.SizeSqrM;
+            vm.RoomCount = realestate.RoomCount;
+            vm.Floor = realestate.Floor;
+            vm.BuildingType = realestate.BuildingType;
+            vm.BuiltInYear = realestate.BuiltInYear;
+            vm.CreatedAt = realestate.CreatedAt;
+            vm.UpdatedAt = realestate.UpdatedAt;
+           
+            return View(vm);
+        }
+
+
     }
 }
