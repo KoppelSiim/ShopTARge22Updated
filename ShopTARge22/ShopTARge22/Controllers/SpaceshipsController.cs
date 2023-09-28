@@ -4,6 +4,7 @@ using ShopTARge22.Core.Dto;
 using ShopTARge22.Core.ServiceInterface;
 using ShopTARge22.Data;
 using ShopTARge22.Models.Spaceships;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ShopTARge22.Controllers
 {
@@ -80,25 +81,24 @@ namespace ShopTARge22.Controllers
 
             return RedirectToAction(nameof(Index), vm);
         }
-
         [HttpGet]
         public async Task<IActionResult> Update(Guid id)
         {
-            
-
             var spaceship = await _spaceshipServices.DetailsAsync(id);
 
             if (spaceship == null)
             {
                 return NotFound();
             }
-            var Images = await _context.FileToApis
+
+            var images = await _context.FileToApis
                 .Where(x => x.SpaceshipId == id)
                 .Select(y => new ImageViewModel
                 {
                     FilePath = y.ExistingFilePath,
                     ImageId = y.Id
                 }).ToArrayAsync();
+
 
             var vm = new SpaceshipCreateUpdateViewModel();
 
@@ -112,6 +112,7 @@ namespace ShopTARge22.Controllers
             vm.EnginePower = spaceship.EnginePower;
             vm.CreatedAt = spaceship.CreatedAt;
             vm.ModifiedAt = spaceship.ModifiedAt;
+            vm.Image.AddRange(images);
 
 
             return View("CreateUpdate", vm);
@@ -131,7 +132,14 @@ namespace ShopTARge22.Controllers
                 Crew = vm.Crew,
                 EnginePower = vm.EnginePower,
                 CreatedAt = vm.CreatedAt,
-                ModifiedAt = vm.ModifiedAt
+                ModifiedAt = vm.ModifiedAt,
+                FileToApiDtos = vm.Image
+                    .Select(x => new FileToApiDto
+                    {
+                        Id = x.ImageId,
+                        ExistingFilePath = x.FilePath,
+                        SpaceshipId = x.SpaceshipId
+                    }).ToArray()
             };
 
             var result = await _spaceshipServices.Update(dto);
@@ -143,6 +151,7 @@ namespace ShopTARge22.Controllers
 
             return RedirectToAction(nameof(Index), vm);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
