@@ -84,12 +84,21 @@ namespace ShopTARge22.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(Guid id)
         {
+            
+
             var spaceship = await _spaceshipServices.DetailsAsync(id);
 
             if (spaceship == null)
             {
                 return NotFound();
             }
+            var Images = await _context.FileToApis
+                .Where(x => x.SpaceshipId == id)
+                .Select(y => new ImageViewModel
+                {
+                    FilePath = y.ExistingFilePath,
+                    ImageId = y.Id
+                }).ToArrayAsync();
 
             var vm = new SpaceshipCreateUpdateViewModel();
 
