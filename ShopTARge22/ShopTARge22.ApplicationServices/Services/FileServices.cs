@@ -3,6 +3,7 @@ using ShopTARge22.Core.Domain;
 using ShopTARge22.Core.Dto;
 using ShopTARge22.Core.ServiceInterface;
 using ShopTARge22.Data;
+using Microsoft.Extensions.FileProviders;
 
 namespace ShopTARge22.ApplicationServices.Services
 {
