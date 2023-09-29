@@ -48,6 +48,17 @@ namespace ShopTARge22.Controllers
                 return NotFound();
             }
 
+            var photos = await _context.FileToDatabases
+                .Where(x => x.RealestateId == id)
+                .Select(y => new RealestatesImageViewModel
+                {
+                    RealestateId = y.Id,
+                    ImageId = y.Id,
+                    ImageData = y.ImageData,
+                    ImageTitle = y.ImageTitle,
+                    Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
+                }).ToArrayAsync();
+
             var vm = new RealestatesDetailsViewModel();
 
             vm.Id = realestate.Id;
@@ -59,7 +70,8 @@ namespace ShopTARge22.Controllers
             vm.BuiltInYear = realestate.BuiltInYear;
             vm.CreatedAt = realestate.CreatedAt;
             vm.UpdatedAt = realestate.UpdatedAt;
-           
+            vm.Image.AddRange(photos);
+
             return View(vm);
         }
 
@@ -71,10 +83,12 @@ namespace ShopTARge22.Controllers
             return View("CreateUpdate", result);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(RealestatesCreateUpdateViewModel vm)
+       
+       /* [HttpPost]
+        public async Task<IActionResult> Create(Realestates dto)
         {
-            var dto = new RealestateDto()
+       
+             var dto = new RealestateDto()
             {
                 Id = vm.Id,
                 Address = vm.Address,
@@ -104,7 +118,7 @@ namespace ShopTARge22.Controllers
             }
 
             return RedirectToAction(nameof(Index), vm);
-        }
+        }*/
 
         [HttpGet]
         public async Task<IActionResult> Update(Guid id)
@@ -115,6 +129,17 @@ namespace ShopTARge22.Controllers
             {
                 return NotFound();
             }
+
+            var photos = await _context.FileToDatabases
+                .Where(x => x.RealestateId == id)
+                .Select(y => new RealestatesImageViewModel
+                {
+                    RealestateId = y.Id,
+                    ImageId = y.Id,
+                    ImageData = y.ImageData,
+                    ImageTitle = y.ImageTitle,
+                    Image = string.Format("data:image/gif;base64,{0}",Convert.ToBase64String(y.ImageData))
+                }).ToArrayAsync();
 
             var vm = new RealestatesCreateUpdateViewModel();
 
@@ -127,7 +152,7 @@ namespace ShopTARge22.Controllers
             vm.BuiltInYear = realestate.BuiltInYear;
             vm.CreatedAt = realestate.CreatedAt;
             vm.UpdatedAt = realestate.UpdatedAt;
-
+            vm.Image.AddRange(photos);
 
             return View("CreateUpdate", vm);
         }
