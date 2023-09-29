@@ -50,6 +50,7 @@ namespace ShopTARge22.ApplicationServices.Services
                         };
 
                         _context.FileToApis.AddAsync(path);
+                        _context.SaveChanges();
                     }
                 }
             }

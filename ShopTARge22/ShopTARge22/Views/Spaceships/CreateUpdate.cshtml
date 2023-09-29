@@ -81,7 +81,7 @@ else
             <partial name="_Images" model="images" />
         }
 
-        @if (Model.Id.HasValue)
+        @if(Model.Id.HasValue)
         {
             <input asp-action="update" asp-controller="spaceships" type="submit" class="btn btn-primary" value="Update" />
         }
@@ -97,13 +97,13 @@ else
 
 
 @section Scripts
-    {
+{
     <script>
         $(document).ready(function () {
             $('.custom-file-input').on("change", function () {
                 var fileLabel = $(this).next('.custom-file-input');
                 var files = $(this)[0].files;
-                if (files.length > 1) {
+                if(files.length > 1 ) {
                     fileLabel.html(files.length + ' files selected');
                 }
                 else if (files.length == 1) {

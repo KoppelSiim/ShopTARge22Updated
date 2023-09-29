@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ShopTARge22.ApplicationServices.Services;
 using ShopTARge22.Core.Dto;
 using ShopTARge22.Core.ServiceInterface;
 using ShopTARge22.Data;
@@ -121,7 +122,7 @@ namespace ShopTARge22.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(SpaceshipCreateUpdateViewModel vm)
         {
-            var dto = new SpaceshipDto()
+             var dto = new SpaceshipDto()
             {
                 Id = vm.Id,
                 Name = vm.Name,
@@ -133,6 +134,7 @@ namespace ShopTARge22.Controllers
                 EnginePower = vm.EnginePower,
                 CreatedAt = vm.CreatedAt,
                 ModifiedAt = vm.ModifiedAt,
+                Files = vm.Files,
                 FileToApiDtos = vm.Image
                     .Select(x => new FileToApiDto
                     {
@@ -141,7 +143,7 @@ namespace ShopTARge22.Controllers
                         SpaceshipId = x.SpaceshipId
                     }).ToArray()
             };
-
+           
             var result = await _spaceshipServices.Update(dto);
 
             if (result == null)
