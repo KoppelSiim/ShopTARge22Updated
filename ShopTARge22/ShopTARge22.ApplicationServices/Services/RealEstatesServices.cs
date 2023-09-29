@@ -10,9 +10,11 @@ namespace ShopTARge22.ApplicationServices.Services
 
     {
         private readonly ShopTARge22Context _context;
+        private readonly IFileServices _fileServices;
 
-        public RealestatesServices(ShopTARge22Context context)
+        public RealestatesServices(ShopTARge22Context context, IFileServices fileServices)
         {
+            _fileServices = fileServices;
             _context = context;
         }
 
@@ -29,7 +31,11 @@ namespace ShopTARge22.ApplicationServices.Services
             realestate.BuiltInYear = dto.BuiltInYear;
             realestate.CreatedAt = DateTime.Now;
             realestate.UpdatedAt = DateTime.Now;
-
+            
+            if(dto!= null)
+            {
+                _fileServices.UploadFilesToDatabase(dto, realestate);
+            }
 
             await _context.Realestates.AddAsync(realestate);
             await _context.SaveChangesAsync();

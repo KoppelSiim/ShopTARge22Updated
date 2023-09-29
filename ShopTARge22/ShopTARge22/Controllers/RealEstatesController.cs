@@ -85,6 +85,15 @@ namespace ShopTARge22.Controllers
                 BuiltInYear = vm.BuiltInYear,
                 CreatedAt = vm.CreatedAt,
                 UpdatedAt = vm.UpdatedAt,
+                Files = vm.Files,
+                Image = vm.Image
+                .Select( x => new FileToDatabaseDto
+                {
+                    Id = x.ImageId,
+                    ImageData = x.ImageData,
+                    ImageTitle = x.ImageTitle,
+                    RealestateId = x.RealestateId
+                }).ToArray()
             };
 
             var result = await _realestateServices.Create(dto);
