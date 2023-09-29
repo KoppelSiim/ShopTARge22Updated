@@ -1,4 +1,6 @@
-﻿namespace ShopTARge22.Core.Dto
+﻿using Microsoft.AspNetCore.Http;
+
+namespace ShopTARge22.Core.Dto
 {
     public class RealestateDto
     {
@@ -9,7 +11,9 @@
         public int Floor { get; set; }
         public string BuildingType { get; set; }
         public DateTime BuiltInYear { get; set; }
-
+        public List<IFormFile> Files  {get;set;}
+        public IEnumerable<FileToDatabaseDto> FileToApiDtos { get; set; }
+            = new List<FileToDatabaseDto>();
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }
