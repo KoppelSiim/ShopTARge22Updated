@@ -83,12 +83,10 @@ namespace ShopTARge22.Controllers
             return View("CreateUpdate", result);
         }
 
-       
-       /* [HttpPost]
-        public async Task<IActionResult> Create(Realestates dto)
+        [HttpPost]
+        public async Task<IActionResult> Create(RealestatesCreateUpdateViewModel vm)
         {
-       
-             var dto = new RealestateDto()
+            var dto = new RealestateDto()
             {
                 Id = vm.Id,
                 Address = vm.Address,
@@ -101,7 +99,7 @@ namespace ShopTARge22.Controllers
                 UpdatedAt = vm.UpdatedAt,
                 Files = vm.Files,
                 Image = vm.Image
-                .Select( x => new FileToDatabaseDto
+                .Select(x => new FileToDatabaseDto
                 {
                     Id = x.ImageId,
                     ImageData = x.ImageData,
@@ -111,14 +109,12 @@ namespace ShopTARge22.Controllers
             };
 
             var result = await _realestateServices.Create(dto);
-
             if (result == null)
             {
                 return RedirectToAction(nameof(Index));
             }
-
             return RedirectToAction(nameof(Index), vm);
-        }*/
+        }
 
         [HttpGet]
         public async Task<IActionResult> Update(Guid id)
