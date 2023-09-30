@@ -198,6 +198,16 @@ namespace ShopTARge22.Controllers
             {
                 return NotFound();
             }
+            var photos = await _context.FileToDatabases
+               .Where(x => x.RealestateId == id)
+               .Select(y => new RealestatesImageViewModel
+               {
+                   RealestateId = y.Id,
+                   ImageId = y.Id,
+                   ImageData = y.ImageData,
+                   ImageTitle = y.ImageTitle,
+                   Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
+               }).ToArrayAsync();
 
             var vm = new RealestatesDeleteViewModel();
 
@@ -210,6 +220,7 @@ namespace ShopTARge22.Controllers
             vm.BuiltInYear = realestate.BuiltInYear;
             vm.CreatedAt = realestate.CreatedAt;
             vm.UpdatedAt = realestate.UpdatedAt;
+            vm.Image.AddRange(photos);
 
             return View(vm);
         }

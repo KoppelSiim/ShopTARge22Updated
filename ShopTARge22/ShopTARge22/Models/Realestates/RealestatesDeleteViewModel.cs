@@ -10,6 +10,9 @@
         public string BuildingType { get; set; }
         public DateTime BuiltInYear { get; set; }
 
+        public List<RealestatesImageViewModel> Image { get; set; }
+        = new List<RealestatesImageViewModel>();
+
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }
