@@ -32,7 +32,7 @@ namespace ShopTARge22.ApplicationServices.Services
                         FileToDatabase files = new FileToDatabase()
                         {
                             Id = Guid.NewGuid(),
-                            ImageTitle = image.Name,
+                            ImageTitle = image.FileName,
                             RealestateId = domain.Id
                         };
                         image.CopyTo(target);
