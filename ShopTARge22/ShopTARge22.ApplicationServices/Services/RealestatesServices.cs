@@ -53,23 +53,27 @@ namespace ShopTARge22.ApplicationServices.Services
 
         public async Task<Realestate> Update(RealestateDto dto)
         {
-            var domain = new Realestate()
-            {
-                Id = dto.Id,
-                Address = dto.Address,
-                SizeSqrM = dto.SizeSqrM,
-                RoomCount = dto.RoomCount,
-                Floor = dto.Floor,
-                BuildingType = dto.BuildingType,
-                BuiltInYear = dto.BuiltInYear,
-                CreatedAt = dto.CreatedAt,
-                UpdatedAt = DateTime.Now,
-            };
+            Realestate realestate = new();
 
-            _context.Realestates.Update(domain);
+            realestate.Id = dto.Id;
+            realestate.Address = dto.Address;
+            realestate.SizeSqrM = dto.SizeSqrM;
+            realestate.RoomCount = dto.RoomCount;
+            realestate.Floor = dto.Floor;
+            realestate.BuildingType = dto.BuildingType;
+            realestate.BuiltInYear = dto.BuiltInYear;
+            realestate.CreatedAt = dto.CreatedAt;
+            realestate.UpdatedAt = DateTime.Now;
+
+            if (dto.Files != null)
+            {
+                _fileServices.UploadFilesToDatabase(dto, realestate);
+            }
+
+            _context.Realestates.Update(realestate);
             await _context.SaveChangesAsync();
 
-            return domain;
+            return realestate;
         }
 
         public async Task<Realestate> Delete(Guid id)
