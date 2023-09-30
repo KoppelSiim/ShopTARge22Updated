@@ -242,22 +242,20 @@ namespace ShopTARge22.Controllers
                 .Select(y => y.Id)
                 .ToListAsync();
 
-            if(imageIdsToDelete == null)
+            if(imageIdsToDelete != null)
             {
-                return RedirectToAction(nameof(Index));
-            }
-
-            foreach (var imageId in imageIdsToDelete)
-
-            {
-                var imageToDelete = await _context.FileToDatabases.FindAsync(imageId);
-                if (imageToDelete != null)
+    
+                foreach (var imageId in imageIdsToDelete)
                 {
-                    _context.FileToDatabases.Remove(imageToDelete);
+                    var imageToDelete = await _context.FileToDatabases.FindAsync(imageId);
+                    if (imageToDelete != null)
+                    {
+                        _context.FileToDatabases.Remove(imageToDelete);
+                    }
                 }
-            }
 
             await _context.SaveChangesAsync();
+            }
 
             // Delete realestate record
             await _realestateServices.Delete(id);
