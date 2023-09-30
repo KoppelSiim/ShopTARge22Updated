@@ -228,15 +228,41 @@ namespace ShopTARge22.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteConfirmation(Guid id)
         {
-            var realestateId = await _realestateServices.Delete(id);
 
-            if (realestateId == null)
+            var realestate = await _realestateServices.DetailsAsync(id);
+
+            if (realestate == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            
+            //First delete all the related images
+            var imageIdsToDelete = await _context.FileToDatabases
+                .Where(x => x.RealestateId == id)
+                .Select(y => y.Id)
+                .ToListAsync();
+
+            if(imageIdsToDelete == null)
             {
                 return RedirectToAction(nameof(Index));
             }
 
-            return RedirectToAction(nameof(Index));
-        }
+            foreach (var imageId in imageIdsToDelete)
 
+            {
+                var imageToDelete = await _context.FileToDatabases.FindAsync(imageId);
+                if (imageToDelete != null)
+                {
+                    _context.FileToDatabases.Remove(imageToDelete);
+                }
+            }
+
+            await _context.SaveChangesAsync();
+
+            // Delete realestate record
+            await _realestateServices.Delete(id);
+            return RedirectToAction(nameof(Index));
+
+        }
     }
 }
