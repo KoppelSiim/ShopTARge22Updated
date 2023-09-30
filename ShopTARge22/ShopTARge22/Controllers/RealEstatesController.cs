@@ -156,6 +156,7 @@ namespace ShopTARge22.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(RealestatesCreateUpdateViewModel vm)
         {
+
             var dto = new RealestateDto()
             {
                 Id = vm.Id,
@@ -164,9 +165,18 @@ namespace ShopTARge22.Controllers
                 RoomCount = vm.RoomCount,
                 Floor = vm.Floor,
                 BuildingType = vm.BuildingType,
-                BuiltInYear= vm.BuiltInYear,
+                BuiltInYear = vm.BuiltInYear,
                 CreatedAt = vm.CreatedAt,
-                UpdatedAt= vm.UpdatedAt
+                UpdatedAt = vm.UpdatedAt,
+                Files = vm.Files,
+                Image = vm.Image
+                    .Select(x => new FileToDatabaseDto
+                    {
+                        Id = x.ImageId,
+                        ImageData = x.ImageData,
+                        ImageTitle = x.ImageTitle,
+                        RealestateId = x.RealestateId,
+                    }).ToArray()
             };
 
             var result = await _realestateServices.Update(dto);
