@@ -134,7 +134,7 @@ namespace ShopTARge22.Controllers
                     ImageId = y.Id,
                     ImageData = y.ImageData,
                     ImageTitle = y.ImageTitle,
-                    Image = string.Format("data:image/gif;base64,{0}",Convert.ToBase64String(y.ImageData))
+                    Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
                 }).ToArrayAsync();
 
             var vm = new RealestatesCreateUpdateViewModel();
@@ -235,16 +235,16 @@ namespace ShopTARge22.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-            
+
             //First delete all the related images
             var imageIdsToDelete = await _context.FileToDatabases
                 .Where(x => x.RealestateId == id)
                 .Select(y => y.Id)
                 .ToListAsync();
 
-            if(imageIdsToDelete != null)
+            if (imageIdsToDelete != null)
             {
-    
+
                 foreach (var imageId in imageIdsToDelete)
                 {
                     var imageToDelete = await _context.FileToDatabases.FindAsync(imageId);
@@ -254,13 +254,27 @@ namespace ShopTARge22.Controllers
                     }
                 }
 
-            await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
 
             // Delete realestate record
             await _realestateServices.Delete(id);
             return RedirectToAction(nameof(Index));
 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteImageFromDatabase(Guid imageId)
+        {
+
+            var imageToDelete = await _context.FileToDatabases.FirstOrDefaultAsync(x => x.Id == imageId);
+                    if (imageToDelete != null)
+                    {
+                        _context.FileToDatabases.Remove(imageToDelete);
+                    }
+                await _context.SaveChangesAsync();
+            
+            return RedirectToAction("Index");
         }
     }
 }
