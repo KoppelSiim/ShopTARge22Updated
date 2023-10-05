@@ -21,7 +21,7 @@ namespace ShopTARge22.Realestate.Test
             realestate.UpdatedAt = DateTime.Now;
             
             //Act
-            var result = await Svc<IRealestateServices>().Create(realestate);
+            var result = await Svc<IRealestatesServices>().Create(realestate);
 
             //Result
             Assert.NotNull(result);
@@ -37,7 +37,7 @@ namespace ShopTARge22.Realestate.Test
             Guid available = Guid.Parse("b2f75912-827d-417f-b91f-4f2eaa09b246");
 
             //Act
-            await Svc<IRealestateServices>().DetailsAsync(available);
+            await Svc<IRealestatesServices>().DetailsAsync(available);
              
             //Assert
             Assert.NotEqual(available,notAvailable );
@@ -49,7 +49,7 @@ namespace ShopTARge22.Realestate.Test
             Guid databaseGuid = Guid.Parse("b2f75912-827d-417f-b91f-4f2eaa09b246");
             Guid guid = Guid.Parse("b2f75912-827d-417f-b91f-4f2eaa09b246");
 
-            await Svc<IRealestateServices>().DetailsAsync(databaseGuid);
+            await Svc<IRealestatesServices>().DetailsAsync(databaseGuid);
 
             Assert.Equal(databaseGuid, guid);
         }
@@ -57,18 +57,18 @@ namespace ShopTARge22.Realestate.Test
         [Fact] public async Task Should_DeleteByIdRealestate_WhenDeleteRealestate()
         {
             RealestateDto realestate = MockRealestateData();
-            var addRealestate = await Svc<IRealestateServices>().Create(realestate);
-            var result = await Svc<IRealestateServices>().Delete((Guid)addRealestate.Id);
+            var addRealestate = await Svc<IRealestatesServices>().Create(realestate);
+            var result = await Svc<IRealestatesServices>().Delete((Guid)addRealestate.Id);
             Assert.Equal(addRealestate,result);   
         }
 
         [Fact] public async Task ShouldNot_DeleteByIdRealestate_WhenDidNotDeleteRealestate()
         {
             RealestateDto realestate = MockRealestateData();
-            var addRealestate1 = await Svc<IRealestateServices>().Create(realestate);
-            var addRealestate2 = await Svc<IRealestateServices>().Create(realestate);
+            var addRealestate1 = await Svc<IRealestatesServices>().Create(realestate);
+            var addRealestate2 = await Svc<IRealestatesServices>().Create(realestate);
 
-            var result = await Svc<IRealestateServices>().Delete((Guid)addRealestate2.Id);
+            var result = await Svc<IRealestatesServices>().Delete((Guid)addRealestate2.Id);
             Assert.NotEqual(addRealestate1.Id,result.Id);
         }
 
@@ -87,7 +87,7 @@ namespace ShopTARge22.Realestate.Test
             realestate.Floor = 3;
             realestate.BuildingType= "ASDASD";
             realestate.BuiltInYear = DateTime.Now.AddYears(1);
-            await Svc<IRealestateServices>().Update(dto);
+            await Svc<IRealestatesServices>().Update(dto);
 
             Assert.Equal(realestate.Id, guid);
             Assert.DoesNotMatch(realestate.Address, dto.Address);
@@ -100,9 +100,20 @@ namespace ShopTARge22.Realestate.Test
             // kasutan domaini andmeid
 
         }
+        [Fact]
+        public async Task Should_UpdateRealestate_WhenUpdateDataVersion2()
+        {
+            RealestateDto dto =  MockRealestateData();
+            var createRealestate = await Svc<IRealestatesServices>().Create(dto);
 
+            RealestateDto update = MockUpdateRealestateData();
+            var result = await Svc<IRealestatesServices>().Update(update);
+            Assert.DoesNotMatch(result.Address, createRealestate.Address);
+            Assert.NotEqual(result.UpdatedAt, createRealestate.UpdatedAt);
+            s
+        }
 
-        private RealestateDto MockRealestateData()
+            private RealestateDto MockRealestateData()
         {
             RealestateDto realestate = new()
             {
@@ -114,6 +125,21 @@ namespace ShopTARge22.Realestate.Test
                 BuiltInYear = DateTime.Now,
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now,
+            };
+            return realestate;
+        }
+        private RealestateDto MockUpdateRealestateData()
+        {
+            RealestateDto realestate = new()
+            {
+                Address = "asd",
+                SizeSqrM = 12323,
+                RoomCount = 13,
+                Floor = 45,
+                BuildingType = "Midagimuud",
+                BuiltInYear = DateTime.Now.AddYears(1),
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now.AddYears(1),
             };
             return realestate;
         }

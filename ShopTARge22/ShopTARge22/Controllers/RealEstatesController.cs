@@ -13,9 +13,9 @@ namespace ShopTARge22.Controllers
     public class RealestatesController : Controller
     {
         private readonly ShopTARge22Context _context;
-        private readonly IRealestateServices _realestateServices;
+        private readonly IRealestatesServices _realestateServices;
 
-        public RealestatesController(ShopTARge22Context context, IRealestateServices realestatesServices)
+        public RealestatesController(ShopTARge22Context context, IRealestatesServices realestatesServices)
         {
             _context = context;
             _realestateServices = realestatesServices;

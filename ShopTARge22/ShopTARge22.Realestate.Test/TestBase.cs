@@ -41,7 +41,7 @@ namespace ShopTARge22.Realestate.Test
         }
         public virtual void SetupServices(IServiceCollection services)
         {
-            services.AddScoped<IRealestateServices, RealestatesServices>();
+            services.AddScoped<IRealestatesServices, RealestatesServices>();
             services.AddScoped<IFileServices, FileServices>();
             services.AddScoped<IHostEnvironment, MockIHostEnvironment>();
             services.AddDbContext<ShopTARge22Context>(x =>
