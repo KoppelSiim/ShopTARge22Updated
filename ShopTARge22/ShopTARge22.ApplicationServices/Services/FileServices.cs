@@ -21,7 +21,7 @@ namespace ShopTARge22.ApplicationServices.Services
             _webHost = webHost;
             _context = context;
         }
-        public void UploadFilesToDatabase(RealestateDto dto, Realestate domain)
+        public void UploadFilesToDatabase(RealestateDto dto, RealEstate domain)
         {
             if( dto.Files!=null && dto.Files.Count > 0)
             {

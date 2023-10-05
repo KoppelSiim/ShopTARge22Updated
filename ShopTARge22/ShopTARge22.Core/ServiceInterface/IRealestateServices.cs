@@ -10,9 +10,9 @@ namespace ShopTARge22.Core.ServiceInterface
 {
     public interface IRealestateServices
     {
-        Task<Realestate> Create(RealestateDto dto);
-        Task<Realestate> DetailsAsync(Guid id);
-        Task<Realestate> Update(RealestateDto dto);
-        Task<Realestate> Delete(Guid id);
+        Task<RealEstate> Create(RealestateDto dto);
+        Task<RealEstate> DetailsAsync(Guid id);
+        Task<RealEstate> Update(RealestateDto dto);
+        Task<RealEstate> Delete(Guid id);
     }
 }

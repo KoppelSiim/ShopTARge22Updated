@@ -6,6 +6,6 @@ namespace ShopTARge22.Core.ServiceInterface
     public interface IFileServices
     {
         void FilesToApi(SpaceshipDto dto, Spaceship spaceship);
-        void UploadFilesToDatabase(RealestateDto dto, Realestate domain);
+        void UploadFilesToDatabase(RealestateDto dto, RealEstate domain);
     }
 }

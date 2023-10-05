@@ -18,9 +18,9 @@ namespace ShopTARge22.ApplicationServices.Services
             _context = context;
         }
 
-        public async Task<Realestate> Create(RealestateDto dto)
+        public async Task<RealEstate> Create(RealestateDto dto)
         {
-            Realestate realestate = new Realestate();
+            RealEstate realestate = new RealEstate();
 
             realestate.Id = Guid.NewGuid();
             realestate.Address = dto.Address;
@@ -43,7 +43,7 @@ namespace ShopTARge22.ApplicationServices.Services
             return realestate;
         }
 
-        public async Task<Realestate> DetailsAsync(Guid id)
+        public async Task<RealEstate> DetailsAsync(Guid id)
         {
             var result = await _context.Realestates
                 .FirstOrDefaultAsync(x => x.Id == id);
@@ -51,9 +51,9 @@ namespace ShopTARge22.ApplicationServices.Services
             return result;
         }
 
-        public async Task<Realestate> Update(RealestateDto dto)
+        public async Task<RealEstate> Update(RealestateDto dto)
         {
-            Realestate realestate = new();
+            RealEstate realestate = new();
 
             realestate.Id = dto.Id;
             realestate.Address = dto.Address;
@@ -76,7 +76,7 @@ namespace ShopTARge22.ApplicationServices.Services
             return realestate;
         }
 
-        public async Task<Realestate> Delete(Guid id)
+        public async Task<RealEstate> Delete(Guid id)
         {
             var realestateId = await _context.Realestates
                 .FirstOrDefaultAsync(x => x.Id == id);
@@ -86,6 +86,6 @@ namespace ShopTARge22.ApplicationServices.Services
 
             return realestateId;
         }
-
+       
     }
 }
