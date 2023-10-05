@@ -43,7 +43,7 @@ namespace ShopTARge22.Realestate.Test
         {
             services.AddScoped<IRealestateServices, RealestatesServices>();
             services.AddScoped<IFileServices, FileServices>();
-            //services.AddScoped<IHostEnvironment, MockIHostEnvironment>();
+            services.AddScoped<IHostEnvironment, MockIHostEnvironment>();
             services.AddDbContext<ShopTARge22Context>(x =>
             {
                 x.UseInMemoryDatabase("TEST");
