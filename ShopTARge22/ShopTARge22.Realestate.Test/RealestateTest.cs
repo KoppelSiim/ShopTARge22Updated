@@ -110,7 +110,7 @@ namespace ShopTARge22.Realestate.Test
             var result = await Svc<IRealestatesServices>().Update(update);
             Assert.DoesNotMatch(result.Address, createRealestate.Address);
             Assert.NotEqual(result.UpdatedAt, createRealestate.UpdatedAt);
-            s
+            
         }
 
             private RealestateDto MockRealestateData()
