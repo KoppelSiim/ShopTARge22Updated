@@ -21,15 +21,7 @@ namespace ShopTARge22.ApplicationServices.Services
 
             return result;
         }
-        /*
-        public Guid? Id { get; set; }
-        public string GroupName { get; set; }
-        public int ChildrenCount { get; set; }
-        public string KindergartenName { get; set; }
-        public string Teacher { get; set; }
-        public DateTime CreateAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-         */
+        
         public async Task<Kindergarten> Create(KindergartenDto dto)
         {
             Kindergarten kindergarten = new Kindergarten();
@@ -48,6 +40,7 @@ namespace ShopTARge22.ApplicationServices.Services
 
             return kindergarten;
         }
+
         public async Task<Kindergarten> Update(KindergartenDto dto)
         {
             Kindergarten kindergarten = new();
@@ -65,6 +58,7 @@ namespace ShopTARge22.ApplicationServices.Services
 
             return kindergarten;
         }
+
         public async Task<Kindergarten> Delete(Guid id)
         {
             var kindergartenId = await _context.Kindergartens

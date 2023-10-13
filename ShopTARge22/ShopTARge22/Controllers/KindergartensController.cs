@@ -18,15 +18,7 @@ namespace ShopTARge22.Controllers
             _context = context;
             _kindergartenServices = kindergartenServices;
         }
-        /*
-        public Guid? Id { get; set; }
-        public string GroupName { get; set; }
-        public int ChildrenCount { get; set; }
-        public string KindergartenName { get; set; }
-        public string Teacher { get; set; }
-        public DateTime CreateAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-         */
+
         public IActionResult Index()
         {
             var result = _context.Kindergartens
