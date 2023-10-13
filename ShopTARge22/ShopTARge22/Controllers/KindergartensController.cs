@@ -8,12 +8,12 @@ using ShopTARge22.Models.Kindergartens;
 
 namespace ShopTARge22.Controllers
 {
-    public class KindegartensController : Controller
+    public class KindergartensController : Controller
     {
         private readonly ShopTARge22Context _context;
         private readonly IKindergartenServices _kindergartenServices;
 
-        public KindegartensController(ShopTARge22Context context, IKindergartenServices kindergartenServices)
+        public KindergartensController(ShopTARge22Context context, IKindergartenServices kindergartenServices)
         {
             _context = context;
             _kindergartenServices = kindergartenServices;
