@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopTARge22.Core", "ShopTAR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopTARge22.ApplicationServices", "ShopTARge22.ApplicationServices\ShopTARge22.ApplicationServices.csproj", "{00E0B18E-4CB4-49D1-BFA8-1217E098146E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTARge22.Realestate.Test", "ShopTARge22.Realestate.Test\ShopTARge22.Realestate.Test.csproj", "{DCBA6ECB-4EB5-4D5A-AAE1-4FAE206EB465}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopTARge22.Realestate.Test", "ShopTARge22.Realestate.Test\ShopTARge22.Realestate.Test.csproj", "{DCBA6ECB-4EB5-4D5A-AAE1-4FAE206EB465}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTARge22.Kindergarten.Test", "ShopTARge22.Kindergarten.Test\ShopTARge22.Kindergarten.Test.csproj", "{FCEEC44B-4F38-4914-9B37-297217E9A330}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{DCBA6ECB-4EB5-4D5A-AAE1-4FAE206EB465}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCBA6ECB-4EB5-4D5A-AAE1-4FAE206EB465}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCBA6ECB-4EB5-4D5A-AAE1-4FAE206EB465}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCEEC44B-4F38-4914-9B37-297217E9A330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCEEC44B-4F38-4914-9B37-297217E9A330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCEEC44B-4F38-4914-9B37-297217E9A330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCEEC44B-4F38-4914-9B37-297217E9A330}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
