@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ShopTARge22.styles.css" asp-append-version="true" />
 </head>
-<body class="">
+<body class="@(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "" : "subpage")">
     <header id="header">
         <div class="inner">
             <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">ShopTARge22</a>
             <nav id="nav">
                 <a  asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                <a  asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                 <a  asp-area="" asp-controller="Spaceships" asp-action="Index">Spaceship</a>
                 <a  asp-area="" asp-controller="Realestates" asp-action="Index">Realestates</a>
                 <a  asp-area="" asp-controller="Kindergartens" asp-action="Index">Kindergartens</a>  
@@ -22,14 +21,21 @@
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
     </header>
-    <main role="main" class="pb-3">
-            @RenderBody()
-    </main>
+    <section id="main" class="wrapper">
+        <div class="inner">
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
+    </section>
     <footer id="footer">
         <div class="inner">
-            &copy; 2023 - ShopTARge22 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+           <h3> &copy; 2023 - ShopTARge22 </h3>
         </div>
     </footer>
+    <div class="copyright">
+        Made with: <a href="https://templated.co/">Templated.co</a>
+    </div>
     <!-- <script src="~/lib/jquery/dist/jquery.min.js"></script> -->
     <!-- <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>-->
     <script src="~/js/jquery.min.js"></script>
