@@ -1,0 +1,22 @@
+﻿@model ShopTARge22.Models.Cocktails.CocktailViewModel;
+
+<h1>Coctail results</h1>
+<dl class="row">
+    <div class="form-group row">
+        <label asp-for="IdDrink " class="col-sm-2 col-form-label"></label>
+        @Html.DisplayFor(model => model.IdDrink)
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="StrDrink" class="col-sm-2 col-form-label"></label>
+        @Html.DisplayFor(model => model.StrDrink);
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="StrDrinkAlternate" class="col-sm-2 col-form-label"></label>
+        @Html.DisplayFor(model => model.StrDrinkAlternate)
+    </div>
+
+</div>
+
+
