@@ -37,7 +37,6 @@ namespace ShopTARge22.Controllers
             _cocktailServices.GetCocktails(dto);
             CocktailViewModel vm = new();
 
-            // vm.IdDrink = dto.IdDrink;
             vm.IdDrink = dto.IdDrink;
             vm.StrDrink = dto.StrDrink;
             vm.StrDrinkAlternate = dto.StrDrinkAlternate;
@@ -88,6 +87,7 @@ namespace ShopTARge22.Controllers
             vm.StrImageAttribution = dto.StrImageAttribution;
             vm.StrCreativeCommonsConfirmed = dto.StrCreativeCommonsConfirmed;
             vm.DateModified = dto.DateModified;
+
             return View(vm);
         }
     }
