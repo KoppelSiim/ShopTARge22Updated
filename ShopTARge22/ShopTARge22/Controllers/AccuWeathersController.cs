@@ -31,10 +31,10 @@ namespace ShopTARge22.Controllers
 
        
         [HttpGet]
-        public IActionResult Weather(string city)
+        public async Task<IActionResult> Weather(string city)
         {
-
-            _accuWeatherServices.GetSubmittedCityKey(city);
+            
+            string cityKey = await _accuWeatherServices.GetSubmittedCityKey(city);
             AccuWeatherViewModel vm = new();
             return View(vm);
         }

@@ -1,5 +1,6 @@
 ﻿using ShopTARge22.Core.ServiceInterface;
 using Newtonsoft.Json;
+using ShopTARge22.Core.Dto.AccuWeatherDtos;
 
 namespace ShopTARge22.ApplicationServices.Services
 {
@@ -53,6 +54,34 @@ namespace ShopTARge22.ApplicationServices.Services
         {
             // Deserialize to a list of dictionaries
             return JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(responseBody);
+        }
+
+        public async Task<AccuWeatherResponseDto> GetWeatherInfo(string cityKey)
+        {
+            string resourceUrl = "http://dataservice.accuweather.com/currentconditions/v1/";
+            string apiCallUrl = $"{resourceUrl}{cityKey}?apikey={apiKey}&details=true";
+
+            using (HttpClient client = new())
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync(apiCallUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Exception: {ex.Message}");
+                }
+            }
+            return null;
         }
     }
 }
