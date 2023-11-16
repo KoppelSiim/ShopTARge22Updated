@@ -4,6 +4,8 @@ namespace ShopTARge22.Core.ServiceInterface
 {
     public interface IAccuWeatherServices
     {
-        Task<string?> GetSubmittedCityKey(string city);
+        //Task<string?> GetSubmittedCityKey(string city);
+        //Task<string?> GetWeatherInfo(string cityKey);
+        Task<AccuWeatherResponseRootDto> GetWeatherInfo(AccuWeatherResponseRootDto dto);
     }
 }
