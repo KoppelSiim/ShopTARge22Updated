@@ -4,7 +4,7 @@ namespace ShopTARge22.Core.Dto.AccuWeatherDtos
 {
     public class AccuWeatherResponseRootDto
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<List<Root>>(myJsonResponse);
+        // Root myDeserializedClass = JsonSerializer.Deserialize<List<Root>>(myJsonResponse);
         public class ApparentTemperature
         {
             public Metric Metric { get; set; }

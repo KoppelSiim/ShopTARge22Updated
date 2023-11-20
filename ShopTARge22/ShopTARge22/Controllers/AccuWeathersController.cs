@@ -32,7 +32,7 @@ namespace ShopTARge22.Controllers
 
        
         [HttpGet]
-        public async Task<IActionResult> Weather(string city)
+        public IActionResult Weather(string city)
         {
             try
             {
