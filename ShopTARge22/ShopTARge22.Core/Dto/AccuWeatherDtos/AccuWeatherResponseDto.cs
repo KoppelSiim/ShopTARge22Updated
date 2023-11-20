@@ -20,7 +20,7 @@ namespace ShopTARge22.Core.Dto.AccuWeatherDtos
         public string WeatherText { get; set; }
         public double WindSpeed { get; set; }
 
-        public static AccuWeatherResponseDto FromRoot(List<AccuWeatherResponseRootDto.Root> roots)
+       /* public static AccuWeatherResponseDto FromRoot(List<AccuWeatherResponseRootDto.Root> roots)
         {
             if (roots != null && roots.Count > 0)
             {
@@ -39,7 +39,7 @@ namespace ShopTARge22.Core.Dto.AccuWeatherDtos
 
             Console.WriteLine("Cannot get data from root");
             return null;
-        }
+        }*/
     }
 }
 

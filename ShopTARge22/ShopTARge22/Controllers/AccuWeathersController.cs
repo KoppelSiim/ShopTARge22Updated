@@ -44,6 +44,7 @@ namespace ShopTARge22.Controllers
                     AccuWeatherViewModel vm = new();
                     vm.CityName = city;
                     vm.Temp = dto.Temp;
+                    vm.RealFeelTemp = dto.RealFeelTemp;
                     vm.RelativeHum = dto.RelativeHum;
                     vm.PressureM = dto.PressureM;
                     vm.WindSpeed = dto.WindSpeed;
