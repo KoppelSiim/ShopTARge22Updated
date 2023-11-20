@@ -103,9 +103,9 @@ namespace ShopTARge22.ApplicationServices.Services
                                 dto.RealFeelTemp = 0.0; // Set a default value or handle accordingly
                             }
                             dto.PressureM = weatherResponse[0].Pressure.Metric.Value;
-                            if (weatherResponse[0].Wind != null && weatherResponse[0].Wind.WindSpeed != null && weatherResponse[0].Wind.WindSpeed.Metric != null)
+                            if (weatherResponse[0].Wind != null && weatherResponse[0].Wind.Speed != null && weatherResponse[0].Wind.Speed.Metric != null)
                             {
-                                dto.WindSpeed = weatherResponse[0].Wind.WindSpeed.Metric.Value;
+                                dto.WindSpeed = weatherResponse[0].Wind.Speed.Metric.Value;
                             }
                             else
                             {

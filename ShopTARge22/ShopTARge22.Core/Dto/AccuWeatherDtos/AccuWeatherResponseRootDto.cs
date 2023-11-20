@@ -29,9 +29,9 @@ namespace ShopTARge22.Core.Dto.AccuWeatherDtos
 
         public class WindInfo
         {
-            public Speed WindSpeed { get; set; }
+            public WindSpeedInfo Speed { get; set; }
 
-            public class Speed
+            public class WindSpeedInfo
             {
                 public Metric Metric { get; set; }
             }

@@ -20,26 +20,6 @@ namespace ShopTARge22.Core.Dto.AccuWeatherDtos
         public string WeatherText { get; set; }
         public double WindSpeed { get; set; }
 
-       /* public static AccuWeatherResponseDto FromRoot(List<AccuWeatherResponseRootDto.Root> roots)
-        {
-            if (roots != null && roots.Count > 0)
-            {
-                var root = roots[0]; // Take the first element from the list
-                Console.WriteLine(root.RealFeelTemperature.Metric.Value);
-                return new AccuWeatherResponseDto
-                {
-                    Temp = root.Temperature.Metric.Value,
-                    RealFeelTemp = root.RealFeelTemperature.Metric.Value,
-                    RelativeHum = root.RelativeHumidity,
-                    PressureM = root.Pressure.Metric.Value,
-                    WeatherText = root.WeatherText,
-                    WindSpeed = root.Wind.Speed.Metric.Value
-                };
-            }
-
-            Console.WriteLine("Cannot get data from root");
-            return null;
-        }*/
     }
 }
 
