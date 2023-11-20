@@ -1,7 +1,7 @@
 ﻿using ShopTARge22.Core.ServiceInterface;
-using Nancy.Json;
 using ShopTARge22.Core.Dto.AccuWeatherDtos;
 using System.Net;
+using Newtonsoft.Json;
 
 namespace ShopTARge22.ApplicationServices.Services
 {
@@ -11,9 +11,9 @@ namespace ShopTARge22.ApplicationServices.Services
         private readonly string apiKey = "myapikey";
         public async Task<string?> GetSubmittedCityKey(string city)
         {
-            string resourceUrl = "http://dataservice.accuweather.com/currentconditions/v1/";
-            string apiCallUrl = $"{resourceUrl}{dto.City}?apikey={apiKey}&details=true";
-            using (WebClient client = new())
+            string resourceUrl = "https://dataservice.accuweather.com/locations/v1/cities/search?";
+            string apiCallUrl = $"{resourceUrl}apikey={apiKey}&q={city}";
+            using (HttpClient client = new())
             {
                 try
                 {
