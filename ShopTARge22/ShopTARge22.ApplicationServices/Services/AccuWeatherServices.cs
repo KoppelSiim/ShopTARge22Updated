@@ -7,7 +7,7 @@ namespace ShopTARge22.ApplicationServices.Services
     public class AccuWeatherServices : IAccuWeatherServices
     {
 
-        private readonly string apiKey = "myapikey";
+        private readonly string apiKey = "myApiKey";
         public async Task<string?> GetSubmittedCityKey(string city)
         {
            
@@ -69,7 +69,19 @@ namespace ShopTARge22.ApplicationServices.Services
 
                     if (response.IsSuccessStatusCode)
                     {
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<AccuWeatherResponseRootDto.Root> weatherResponse = JsonConvert.DeserializeObject<List<AccuWeatherResponseRootDto.Root>>(responseBody);
 
+                        if (weatherResponse.Count > 0)
+                        {
+                            AccuWeatherResponseDto dto = AccuWeatherResponseDto.FromRoot(weatherResponse);
+                            return dto;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error: Empty response array.");
+                        }
+                   
                     }
                     else
                     {

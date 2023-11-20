@@ -1,3 +1,41 @@
 ﻿@model ShopTARge22.Models.AccuWeatherForecast.AccuWeatherViewModel;
 
-<h1>Weather info for city</h1>
+<div>
+    <h1>Weather result</h1>
+    <dl class="row">
+        <div class="form-group row">
+            <label asp-for="CityName " class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.CityName)
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Temp" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Temp);
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="RealFeelTemp" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.RealFeelTemp)
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="RelativeHum" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.RelativeHum)
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="PressureM" class="col-xxl-12 col-sm-2 col-form-label"></label>
+            <span class="col-xxl-12 col-sm-2">@Html.DisplayFor(model => model.PressureM);</span>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="WindSpeed" class="col-xxl-12 col-sm-2 col-form-label"></label>
+            <span class="col-xxl-12 col-sm-2">@Html.DisplayFor(model => model.WindSpeed);</span>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="WeatherText" class="col-xxl-12 col-sm-2 col-form-label"></label>
+            <span class="col-xxl-12 col-sm-2">@Html.DisplayFor(model => model.WeatherText);</span>
+        </div>
+    </dl>
+</div>
