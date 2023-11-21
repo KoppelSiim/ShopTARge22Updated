@@ -12,23 +12,23 @@
         </div>
 
         <div class="form-group row">
-            <label asp-for="Temp" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.Temp) °C
+            <label asp-for="Temperature" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Temperature) °C
         </div>
 
         <div class="form-group row">
-            <label asp-for="RealFeelTemp" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.RealFeelTemp) °C
+            <label asp-for="TempFeelsLike" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.TempFeelsLike) °C
         </div>
 
         <div class="form-group row">
-            <label asp-for="RelativeHum" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.RelativeHum) %
+            <label asp-for="Humidity" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Humidity) %
         </div>
 
         <div class="form-group row">
-            <label asp-for="PressureM" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.PressureM) mpa
+            <label asp-for="Pressure" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Pressure) mpa
         </div>
 
         <div class="form-group row">
@@ -37,8 +37,8 @@
         </div>
 
         <div class="form-group row">
-            <label asp-for="WeatherText" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.WeatherText)
+            <label asp-for="WeatherConditions" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.WeatherConditions)
         </div>
 
     </dl>

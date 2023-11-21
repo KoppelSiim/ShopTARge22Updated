@@ -1,6 +1,5 @@
 ﻿using ShopTARge22.Core.ServiceInterface;
 using ShopTARge22.Core.Dto.AccuWeatherDtos;
-using System.Net;
 using Newtonsoft.Json;
 
 namespace ShopTARge22.ApplicationServices.Services
@@ -28,7 +27,7 @@ namespace ShopTARge22.ApplicationServices.Services
                         if (cityInfoList.Count > 0)
                         {
                             string cityKey = cityInfoList[0]["Key"].ToString();
-                            Console.WriteLine($"Key: {cityKey}");
+                            //Console.WriteLine($"Key: {cityKey}");
                             return cityKey;
                         }
                         else
