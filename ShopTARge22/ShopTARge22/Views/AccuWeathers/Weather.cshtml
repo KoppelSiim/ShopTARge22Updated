@@ -1,8 +1,11 @@
 ﻿@model ShopTARge22.Models.AccuWeatherForecast.AccuWeatherViewModel;
 
-<div>
-    <h1>Weather result</h1>
-    <dl class="row">
+<div class="container">
+
+    <h1>@Html.DisplayFor(model => model.CityName)</h1>
+    <h2>Weather forecast for the searched city</h2>
+    <dl class="row text-dark">
+
         <div class="form-group row">
             <label asp-for="CityName " class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.CityName)
@@ -10,32 +13,33 @@
 
         <div class="form-group row">
             <label asp-for="Temp" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.Temp);
+            @Html.DisplayFor(model => model.Temp) °C
         </div>
 
         <div class="form-group row">
             <label asp-for="RealFeelTemp" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.RealFeelTemp)
+            @Html.DisplayFor(model => model.RealFeelTemp) °C
         </div>
 
         <div class="form-group row">
             <label asp-for="RelativeHum" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.RelativeHum)
+            @Html.DisplayFor(model => model.RelativeHum) %
         </div>
 
         <div class="form-group row">
-            <label asp-for="PressureM" class="col-xxl-12 col-sm-2 col-form-label"></label>
-            <span class="col-xxl-12 col-sm-2">@Html.DisplayFor(model => model.PressureM);</span>
+            <label asp-for="PressureM" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.PressureM) mpa
         </div>
 
         <div class="form-group row">
-            <label asp-for="WindSpeed" class="col-xxl-12 col-sm-2 col-form-label"></label>
-            <span class="col-xxl-12 col-sm-2">@Html.DisplayFor(model => model.WindSpeed);</span>
+            <label asp-for="WindSpeed" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.WindSpeed) km/h
         </div>
 
         <div class="form-group row">
-            <label asp-for="WeatherText" class="col-xxl-12 col-sm-2 col-form-label"></label>
-            <span class="col-xxl-12 col-sm-2">@Html.DisplayFor(model => model.WeatherText);</span>
+            <label asp-for="WeatherText" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.WeatherText)
         </div>
+
     </dl>
 </div>

@@ -54,13 +54,11 @@ namespace ShopTARge22.Controllers
                 }
                 else
                 {
-                    // Log or handle the case where dto is null
                     Console.WriteLine("Error: AccuWeatherResponseDto is null.");
                 }
             }
             catch (Exception ex)
             {
-                // Log or handle the exception
                 Console.WriteLine($"Exception: {ex.Message}");
             }
 

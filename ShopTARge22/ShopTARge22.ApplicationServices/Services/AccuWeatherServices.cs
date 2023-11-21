@@ -48,6 +48,7 @@ namespace ShopTARge22.ApplicationServices.Services
             }
             return null;
         }
+
         // Method to parse JSON response using Newtonsoft.Json
         private List<Dictionary<string, object>> ParseJsonResponse(string responseBody)
         {
@@ -70,63 +71,66 @@ namespace ShopTARge22.ApplicationServices.Services
                     {
                         string responseBody = await response.Content.ReadAsStringAsync();
                         List<AccuWeatherResponseRootDto> weatherResponse = JsonConvert.DeserializeObject<List<AccuWeatherResponseRootDto>>(responseBody);
-                        Console.WriteLine(weatherResponse);
+                      
                         if (weatherResponse.Count > 0)
                         {
-                            Console.WriteLine(weatherResponse[0]);
                             AccuWeatherResponseDto dto = new();
                             dto.WeatherText = weatherResponse[0].WeatherText;
                             dto.RelativeHum = weatherResponse[0].RelativeHumidity;
-                            // Check if TemperatureR is not null before accessing its properties
+
+                            // Check if Temperature and Metric is not null before accessing its properties
                             if (weatherResponse[0].Temperature != null && weatherResponse[0].Temperature.Metric != null)
                             {
                                 dto.Temp = weatherResponse[0].Temperature.Metric.Value;
                             }
                             else
                             {
-                                // Handle the case where TemperatureR or its Metric property is null
                                 Console.WriteLine("Error: TemperatureR or Metric is null.");
-                                dto.Temp = 0.0; // Set a default value or handle accordingly
+                                dto.Temp = 0.0;
                             }
 
-                            // dto.Temp = weatherResponse[0].TemperatureR.Metric.Value;
-                           // dto.RealFeelTemp = weatherResponse[0].RealFeelTemperatureR.Metric.Value;
-                            // Check if RealFeelTemperatureR is not null before accessing its Metric property
+                            // Check if RealFeelTemperature and Metric is not null
                             if (weatherResponse[0].RealFeelTemperature != null && weatherResponse[0].RealFeelTemperature.Metric != null)
                             {
                                 dto.RealFeelTemp = weatherResponse[0].RealFeelTemperature.Metric.Value;
                             }
+
                             else
                             {
-                                // Handle the case where RealFeelTemperatureR or its Metric property is null
-                                Console.WriteLine("Error: RealFeelTemperatureR or Metric is null.");
-                                dto.RealFeelTemp = 0.0; // Set a default value or handle accordingly
+                                // Handle the case where RealFeelTemperature or its Metric property is null
+                                Console.WriteLine("Error: RealFeelTemperature or Metric is null.");
+                                dto.RealFeelTemp = 0.0; 
                             }
+
                             dto.PressureM = weatherResponse[0].Pressure.Metric.Value;
+
                             if (weatherResponse[0].Wind != null && weatherResponse[0].Wind.Speed != null && weatherResponse[0].Wind.Speed.Metric != null)
                             {
                                 dto.WindSpeed = weatherResponse[0].Wind.Speed.Metric.Value;
                             }
+
                             else
                             {
-                                // Handle the case where the necessary properties are null
                                 dto.WindSpeed = 0.0;
                                 Console.WriteLine("Error: Wind properties are null.");
                             }
-                            //dto.WindSpeed = weatherResponse[0].Wind.WindSpeed.Metric.Value;
+
                             return dto;
                         }
+
                         else
                         {
                             Console.WriteLine("Error: Empty response array.");
                         }
-                   
+
                     }
                     else
                     {
                         Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
                     }
+
                 }
+
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Exception: {ex.Message}");

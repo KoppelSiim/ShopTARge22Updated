@@ -4,14 +4,14 @@ namespace ShopTARge22.Core.Dto.AccuWeatherDtos
 {
     public class AccuWeatherResponseDto
     {
-
-        //Temperature.Metric.Value	double	Rounded value in specified units. May be NULL.
-        //RealFeelTemperature	object	Patented AccuWeather RealFeel Temperature. Contains Metric and Imperial Values.
-        //RelativeHumidity	int32	Relative humidity. May be NULL.
-        //Pressure	object	Atmospheric pressure. Contains Metric and Imperial Values. metric mb! 
-        //Wind.Speed	object	Wind Speed. Contains Metric and Imperial Values.
-        //WeatherText	string	Phrase description of the current weather condition. Displayed in the language set with language code in URL.
-
+     /* From Documentation
+        Temperature.Metric.Value:   double	Rounded value in specified units. May be NULL.
+        RealFeelTemperature:	    object	Patented AccuWeather RealFeel Temperature. Contains Metric and Imperial Values.
+        RelativeHumidity:	        int32	Relative humidity. May be NULL.
+        Pressure:	                object	Atmospheric pressure. Contains Metric and Imperial Values. metric mb! 
+        Wind.Speed:	                object	Wind Speed. Contains Metric and Imperial Values.
+        WeatherText:	            string	Phrase description of the current weather condition. Displayed in the language set with language code in URL
+     */
 
         public double? Temp { get; set; }
         public double RealFeelTemp { get; set; }
