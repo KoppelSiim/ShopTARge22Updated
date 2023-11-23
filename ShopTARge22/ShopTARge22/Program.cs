@@ -14,7 +14,7 @@ builder.Services.AddScoped<IFileServices, FileServices>();
 builder.Services.AddScoped<IRealestatesServices, RealestatesServices>();
 builder.Services.AddScoped<IKindergartenServices, KirdergartenServices>();
 builder.Services.AddScoped<ICocktailServices, CoctailServices>();
-
+builder.Services.AddScoped<IEmailServices, EmailServices>();
 builder.Services.AddDbContext<ShopTARge22Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
