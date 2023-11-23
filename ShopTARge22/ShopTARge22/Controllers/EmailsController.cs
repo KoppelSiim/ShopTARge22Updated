@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShopTARge22.Core.Dto;
 using ShopTARge22.Core.ServiceInterface;
+using ShopTARge22.Models.Emails;
 
 namespace ShopTARge22.Controllers
 {
@@ -17,9 +18,14 @@ namespace ShopTARge22.Controllers
         }
 
         [HttpPost]
-        public IActionResult SendEmail(EmailDtos request)
+        public IActionResult SendEmail(EmailIndexViewModel vm)
         {
-            _emailServices.SendEmail(request);
+ 
+            EmailDtos newreq = new();
+            newreq.To = vm.To;
+            newreq.Subject = vm.Subject;
+            newreq.Body = vm.Body;
+            _emailServices.SendEmail(newreq);
             return Ok();
         }
 

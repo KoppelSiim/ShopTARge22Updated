@@ -9,6 +9,7 @@ namespace ShopTARge22.ApplicationServices.Services
     {
         public void SendEmail(EmailDtos request)
         {
+           
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse("siimk999@gmail.com"));
             email.To.Add(MailboxAddress.Parse(request.To));
@@ -20,7 +21,7 @@ namespace ShopTARge22.ApplicationServices.Services
                 smtp.Connect("smtp.gmail.com", 587, false);
 
                 // Note: only needed if the SMTP server requires authentication
-                smtp.Authenticate("siimk999@gmail.com", "smtp_password");
+                smtp.Authenticate("siimk999@gmail.com", "myapikey");
                 smtp.Send(email);
                 smtp.Disconnect(true);
             }
