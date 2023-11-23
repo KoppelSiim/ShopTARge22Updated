@@ -2,7 +2,7 @@
 
 namespace ShopTARge22.Controllers
 {
-    public class EmailController : Controller
+    public class EmailsController : Controller
     {
         public IActionResult Index()
         {
