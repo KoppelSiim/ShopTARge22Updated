@@ -1,3 +1,4 @@
+using ShopTARge22.Hubs; // Reference the Hubs folder
 using ShopTARge22.Data;
 using Microsoft.EntityFrameworkCore;
 using ShopTARge22.Core.ServiceInterface;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.FileProviders;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSignalR(); // Add SignalR service
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
@@ -45,5 +47,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+// Map the hub
+app.MapHub<ChatHub>("/chatHub");
 app.Run();
