@@ -20,8 +20,13 @@
                 <a  asp-area="" asp-controller="Cocktails" asp-action="Index">Cocktails</a>
                 <a  asp-area="" asp-controller="Emails" asp-action="Index">Email</a>
                 <a  asp-area="" asp-controller="Chats" asp-action="Index">Chat</a>
-                <a asp-area="" asp-controller="Accounts" asp-action="Index">Roles</a>
+               <!-- <a asp-area="" asp-controller="Accounts" asp-action="Index">Roles</a> -->
             </nav>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a asp-action="register" asp-controller="accounts" class="nav-link m-1">Register</a>
+                </li>
+            </ul>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
     </header>
