@@ -6,6 +6,7 @@ using Microsoft.Extensions.FileProviders;
 using ShopTARge22.Hubs;
 using Microsoft.AspNetCore.Identity;
 using ShopTARge22.Core.Domain;
+using ShopTARge22.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,12 +23,16 @@ builder.Services.AddScoped<IEmailServices, EmailServices>();
 builder.Services.AddDbContext<ShopTARge22Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-        options.SignIn.RequireConfirmedAccount = true)
+    options.SignIn.RequireConfirmedAccount = true)
         .AddEntityFrameworkStores<ShopTARge22Context>()
         .AddDefaultTokenProviders()
+        .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("CustomEmailConfirmation")
         .AddDefaultUI();
 
+/*/builder.Services.Configure<CustomEmailTokenProviderOptions>(o =>
+    o.TokenLifeSpan = 3);*/
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

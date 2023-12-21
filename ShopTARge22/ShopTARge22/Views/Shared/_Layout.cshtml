@@ -12,7 +12,7 @@
 </head>
 <body class="@(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "" : "subpage")">
     <header id="header">
-        <div class="inner">
+        < class="inner">
             <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">ShopTARge22</a>
             <nav id="nav">
                 <a  asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -22,7 +22,7 @@
                 <a  asp-area="" asp-controller="Cocktails" asp-action="Index">Cocktails</a>
                 <a  asp-area="" asp-controller="Emails" asp-action="Index">Email</a>
                 <a  asp-area="" asp-controller="Chats" asp-action="Index">Chat</a>
-               <a asp-area="" asp-controller="Accounts" asp-action="Index">Roles</a>
+                <a  asp-area="" asp-controller="Accounts" asp-action="Index">Manage Account</a>
             </nav>
             <ul class="navbar-nav ml-auto">
                 @if (signInManager.IsSignedIn(User))
@@ -46,6 +46,7 @@
                 }
             </ul>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+           
         </div>
     </header>
     <section id="main" class="wrapper">
